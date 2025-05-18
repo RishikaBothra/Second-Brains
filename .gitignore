@@ -1,0 +1,31 @@
+# Root-level ignores
+node_modules/
+.env
+dist/
+build/
+.DS_Store
+*.log
+npm-debug.log*
+
+# Ignore OS-specific files
+Thumbs.db
+
+# Logs
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore TypeScript build files (if any)
+*.tsbuildinfo
+
+# React (client) specific ignores
+client/node_modules/
+client/build/
+client/.env
+
+# Server (Express/Node) specific ignores
+server/node_modules/
+server/dist/
+server/.env
+
