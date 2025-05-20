@@ -1,21 +1,31 @@
-import express from "express";
-import dotenv from "dotenv";
+import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
 dotenv.config();
+const app = express();
+app.use(express.json());
+const port = process.env.Port
+const DBURI = process.env.DB_URL;
 
-const  app = express();
+function startServer(){
+    app.listen(port,() =>{
+        console.log(`Server is running on port ${port}`);
+    })
+}
+startServer();
 
-app.post("/api/v1/signup",(req,res) => {
-    const {username,password} = req.body;
-    if(username && password){
-        res.status(200).send({
-            message: "User created succesfully",
-        })
+async function connectdb(){
+    try{
+        
+        await mongoose.connect(DBURI as string);
+        console.log("Connected to Database!");
     }
-    else{
-        res.status(411).send({
-            message: "All the feilds are compilsory",
-        })
+    catch(err){
+        console.log("Error connecting to Database!", err);
     }
-    
-})
+}
+connectdb();
+
+
+
