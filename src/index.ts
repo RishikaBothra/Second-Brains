@@ -7,6 +7,9 @@ const app = express();
 app.use(express.json());
 const port = process.env.Port
 const DBURI = process.env.DB_URL;
+import signupRoute from "./routes/Signup";
+app.use('/api/v1', signupRoute);
+
 
 function startServer(){
     app.listen(port,() =>{
@@ -26,6 +29,9 @@ async function connectdb(){
     }
 }
 connectdb();
+
+
+
 
 
 
