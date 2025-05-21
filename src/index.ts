@@ -9,6 +9,8 @@ const port = process.env.Port
 const DBURI = process.env.DB_URL;
 import signupRoute from "./routes/Signup";
 app.use('/api/v1', signupRoute);
+import signinRoute from "./routes/signin"
+app.use('/api/v1', signinRoute);
 
 
 function startServer(){
