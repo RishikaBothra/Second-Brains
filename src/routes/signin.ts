@@ -6,7 +6,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 dotenv.config()
-const signinRoute = express();
+const signinRoute = express.Router();
 signinRoute.use(express.json());
 
 const siginSchma = z.object({
