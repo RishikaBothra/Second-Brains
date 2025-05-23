@@ -30,7 +30,8 @@ signinRoute.post("/signin", async(req:Request,res:Response): Promise<void> => {
     }
     try{
         const{username,password} = req.body;
-        const existinguser = await User.findOne({username,password});
+        const existinguser = await User.findOne({username});
+        
         if(!existinguser){
             res.status(403).send({
                 message:"user doesn't exists."
