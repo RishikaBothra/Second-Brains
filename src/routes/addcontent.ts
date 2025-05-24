@@ -1,47 +1,51 @@
 import express, { Request, Response } from "express";
-import {z} from  "zod";
-import User from "../user"
+import { z } from "zod";
+import addcontentmodel from "../models";
+import { userMiddleware } from "../middleware";
 
 const addcontent = express.Router();
 addcontent.use(express.json());
 
 const contentSchema = z.object({
-    link :z.string().url({ message: "Link must be a url"}),
-    type: z.string().min(1,{message: "Type is required"}),
-    title:z.string().min(1,{message : "Title is required"})
+    link: z.string().url({ message: "Link must be a url" }),
+    type: z.string().min(1, { message: "Type is required" }),
+    title: z.string().min(1, { message: "Title is required" })
 });
 
-addcontent.post("/content",userMiddleware,async(req:Request,res:Response): Promise<void> =>{
-    const prased = contentSchema.safeParse(req.body)
-    if(!prased.success){
+addcontent.post("/content", userMiddleware, async (req: Request, res: Response): Promise<void> => {
+
+    const parsed = contentSchema.safeParse(req.body)
+
+    if (!parsed.success) {
         res.status(400).send({
             message: "Invalid",
-            
+
         });
         return;
     }
-    const { link, type, title } = prased.data;
-    try{
-        await User.create({
+    const { link, type, title } = parsed.data;
+
+    try {
+        await addcontentmodel.create({
             link,
             type,
             title,
-            userId:req.userId
-            tags:[]
+            userId: req.userId,
+            tags: []
         });
         res.status(201).send({
-            message:"content added successfully"
+            message: "content added successfully"
         });
-        return ;
+        return;
     }
-    catch(error){
+    catch (error) {
         res.status(500).send({
-            message:"Internal server error"
+            message: "Internal server error"
         });
-    return ;
+        return;
     }
 
-    
+
 
 });
 
