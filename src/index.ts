@@ -11,6 +11,8 @@ import signupRoute from "./routes/Signup";
 app.use('/api/v1', signupRoute);
 import signinRoute from "./routes/signin"
 app.use('/api/v1', signinRoute);
+import addcontent from "./routes/addcontent"
+app.use('/api/v1',addcontent);
 
 
 function startServer(){
