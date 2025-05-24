@@ -12,13 +12,10 @@ declare global {
 
 export const userMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const header = req.headers["authorization"];
-  (header)
   const JWT_SECRET = process.env.JWT_SECRET;
   try {
-    ("opop")
     const decoder = jwt.verify(header as string, JWT_SECRET as string);
     if (decoder) {
-      ("jkl")
       req.userId = (decoder as jwt.JwtPayload).userId;
       next();
 

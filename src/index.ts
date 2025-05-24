@@ -13,7 +13,8 @@ import signinRoute from "./routes/signin"
 app.use('/api/v1', signinRoute);
 import addcontent from "./routes/addcontent"
 app.use('/api/v1',addcontent);
-
+import getusercontent from './routes/getusercontent';
+app.use('/api/v1', getusercontent);
 
 function startServer(){
     app.listen(port,() =>{
