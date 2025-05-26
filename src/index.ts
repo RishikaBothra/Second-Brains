@@ -15,6 +15,8 @@ import addcontent from "./routes/addcontent"
 app.use('/api/v1',addcontent);
 import getusercontent from './routes/getusercontent';
 app.use('/api/v1', getusercontent);
+import deleteusercontent from './routes/deleteusercontent';
+app.use('/api/v1', deleteusercontent);
 
 function startServer(){
     app.listen(port,() =>{
