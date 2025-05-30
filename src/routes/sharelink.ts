@@ -16,11 +16,11 @@ function ramdomhash(length: number): string {
 }
 
 sharelink.post("/share", userMiddleware, async (req: Request, res: Response): Promise<void> => {
-    const { share } = req.body;
+    const { link } = req.body;
 
     try {
-        if (share) {
-            const existingLink = await linkModel.findOne({ userId: req.userId, share });
+        if (link) {
+            const existingLink = await linkModel.findOne({ userId: req.userId, link });
             if (existingLink) {
                 res.json({
                     hash: existingLink.hash,
@@ -30,6 +30,7 @@ sharelink.post("/share", userMiddleware, async (req: Request, res: Response): Pr
             const hash = ramdomhash(10);
             await linkModel.create({
                 userId: req.userId,
+                link,
                 hash,
             });
 

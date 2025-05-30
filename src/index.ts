@@ -17,6 +17,8 @@ import getusercontent from './routes/getusercontent';
 app.use('/api/v1', getusercontent);
 import deleteusercontent from './routes/deleteusercontent';
 app.use('/api/v1', deleteusercontent);
+import sharelink from './routes/sharelink';
+app.use('/api/v1', sharelink);
 
 function startServer(){
     app.listen(port,() =>{
@@ -36,6 +38,12 @@ async function connectdb(){
     }
 }
 connectdb();
+
+app.get("/", (_req,res)=>{
+    res.json({
+        message:"hi there!"
+    })
+})
 
 
 
