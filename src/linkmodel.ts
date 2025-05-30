@@ -7,7 +7,8 @@ const link = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true,
-    }
+    },
+    link:{type:String,required:true}
 
 })
 const linkModel = mongoose.model('Link', link);
