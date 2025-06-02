@@ -19,6 +19,8 @@ import deleteusercontent from './routes/deleteusercontent';
 app.use('/api/v1', deleteusercontent);
 import sharelink from './routes/sharelink';
 app.use('/api/v1', sharelink);
+import getlink from './routes/getlink';
+app.use('/api/v1', getlink); 
 
 function startServer(){
     app.listen(port,() =>{
