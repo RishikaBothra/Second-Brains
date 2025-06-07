@@ -6,7 +6,7 @@ interface buttonprops{
     text:string;
     starticon?:ReactElement;
     endicon?:ReactElement;
-    onclick:() =>void
+    onclick:() =>void;
     //onClick is a function that takes no parameters and returns nothing.
 
 }
@@ -20,11 +20,8 @@ const defaultStyles = " px-4 py-2 rounded-md";
 
 
 export const Button = (props:buttonprops) => {
-    return (
-        <button className={variantStyles[props.variant]+ defaultStyles}>
-            {props.text}
-        </button>
-    );
+    return <button className = { variantStyles[props.variant] + " " + defaultStyles + " " + props.size} onClick = {props.onclick}>
+    {props.text}</button>;
 }
 
-<Button variant="primary" size="md" onClick={() => {}} text="Share" />
+<Button variant = "primary" size = "md" onClick{()=>{}} text = {"asd"}
