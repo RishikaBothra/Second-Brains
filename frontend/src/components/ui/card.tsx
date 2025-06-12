@@ -7,10 +7,10 @@ interface CardProps {
 }
 
 export function Card({ title, link, type }: CardProps) {
-    return <div className=" p-4 bg-white rounded-md shadow-md broder-slate-100 max-w-72 broder">
+    return <div className=" p-4 bg-white rounded-md shadow-md border-slate-100 max-w-72 border">
         <div className="flex justify-between text-md font-semibold">
             <div className="flex p-1 items-center">
-                <div className="text-gray-500 iteams-center pr-4">
+                <div className="text-gray-500 items-center pr-4">
                     <ShareIcon />
                 </div>
                 {title}
@@ -31,7 +31,7 @@ export function Card({ title, link, type }: CardProps) {
         </div>
           <div className="pt-4">
             {type === "youtube" && 
-                <iframe className="w-full" src= {link.replace("watch","embed")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                <iframe className="w-full" src={link.replace("watch?v=", "embed/")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             }
             {type === "twitter" && 
                 <blockquote className="twitter-tweet">
