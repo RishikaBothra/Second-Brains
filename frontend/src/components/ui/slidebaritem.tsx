@@ -7,9 +7,11 @@ export function Slidebaritem({text,icon}:
     }
 ){
     return <div className="flex items-center gap-2 p-2 hover:bg-gray-100 cursor-pointer">
-        <div className="flex text-gray-500">
-        {icon} {/*icon colour not chnaging idk why*/}
+        <div className="flex text-gray-400">
+        {icon} 
         </div>
+        <div className="text-gray-500 font-medium">
         <span>{text}</span>
+        </div>
     </div>
 }
