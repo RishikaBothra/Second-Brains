@@ -6,7 +6,7 @@ export function Slidebaritem({text,icon}:
 
     }
 ){
-    return <div className="flex items-center gap-2 p-2 hover:bg-gray-100 cursor-pointer">
+    return <div className="flex items-center gap-2 p-2 hover:bg-gray-200 cursor-pointer rounded max-w-64 pl-4 transition-all duration-150">
         <div className="flex text-gray-400">
         {icon} 
         </div>
