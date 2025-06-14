@@ -7,13 +7,11 @@ interface buttonprops{
     starticon?:ReactElement;
     endicon?:ReactElement;
     onclick:() =>void;
-    //onClick is a function that takes no parameters and returns nothing.
-
 }
 
 const variantStyles = {
     "primary":"bg-blue-600 text-white",
-    "secondary":"bg-blue-200 text-white"
+    "secondary":"bg-blue-300 text-white"
 }
 
 const defaultStyles = " px-4 py-2 rounded-md flex items-center gap-2";
