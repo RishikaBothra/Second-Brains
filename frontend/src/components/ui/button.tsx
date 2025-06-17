@@ -6,23 +6,22 @@ interface buttonprops{
     text:string;
     starticon?:ReactElement;
     endicon?:ReactElement;
-    onclick:() =>void;
+    onClick:() =>void;
 }
 
 const variantStyles = {
     "primary":"bg-blue-600 text-white",
-    "secondary":"bg-blue-300 text-white"
+    "secondary":"bg-blue-400 text-white"
 }
 
-const defaultStyles = " px-4 py-2 rounded-md flex items-center gap-2";
-
+const defaultStyles = " px-4 py-2 rounded-md flex items-center gap-2 hover:bg-blue-300 transition-colors duration-200 cursor-pointer";
 
 export const Button = (props:buttonprops) => {
-    return <button className = { variantStyles[props.variant] + " " + defaultStyles + " " + props.size} onClick = {props.onclick}>
+    return <button onClick = {props.onClick} className = { variantStyles[props.variant] + " " + defaultStyles + " " + props.size}>
     {props.starticon}
     {props.text}
     
     </button>;
 }
 
-<Button variant = "primary" size = "md"  onclick={()=>{}} text={"asd"} />
+<Button variant = "primary" size = "md"  onClick={()=>{}} text={"asd"} />

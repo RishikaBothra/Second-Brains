@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { CreateContentModal } from "../CreateContentModal";
 import { PlusIcon } from "../icons/Plusicon";
 import { ShareIcon } from "../icons/Shareicon";
@@ -6,6 +7,7 @@ import { Card } from "../ui/card";
 import { Slidebar } from "../ui/slidebar";
 
  export function Dashboard() {
+  const [modalOpen, setModalOpen] = useState(true);
   function handleShareBrain() {
     console.log("Share Brain clicked");
   }
@@ -14,20 +16,21 @@ import { Slidebar } from "../ui/slidebar";
     <div>
       <Slidebar />
 
+
       <div className="p-4 ml-72 min-h-screen bg-gray-100 border-2 border-gray-100">
 
-        <CreateContentModal open={false} />
+        <CreateContentModal open={modalOpen} onClose={() => setModalOpen(false)} />
         <div className="flex justify-end gap-4 mb-4">
-          <Button
+          <Button 
             variant="secondary"
             text="Share Brain"
-            onclick={handleShareBrain}
             starticon={<ShareIcon />}
           />
-          <Button
+          <Button onClick={() =>
+            setModalOpen(true)
+          } 
             variant="primary"
             text="Add Content"
-            onclick={handleShareBrain}
             starticon={<PlusIcon />}
           />
         </div>
