@@ -6,7 +6,7 @@ interface buttonprops{
     text:string;
     starticon?:ReactElement;
     endicon?:ReactElement;
-    onClick:() =>void;
+    onClick?:() =>void;
 }
 
 const variantStyles = {
@@ -14,7 +14,7 @@ const variantStyles = {
     "secondary":"bg-blue-400 text-white"
 }
 
-const defaultStyles = " px-4 py-2 rounded-md flex items-center gap-2 hover:bg-blue-300 transition-colors duration-200 cursor-pointer";
+const defaultStyles = " px-4 py-2 rounded-md flex items-center gap-2 hover:bg-blue-300 transition-colors duration-200 cursor-pointer text-white";
 
 export const Button = (props:buttonprops) => {
     return <button onClick = {props.onClick} className = { variantStyles[props.variant] + " " + defaultStyles + " " + props.size}>
