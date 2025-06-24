@@ -7,6 +7,7 @@ interface buttonprops{
     starticon?:ReactElement;
     endicon?:ReactElement;
     onClick?:() =>void;
+    loading?:boolean;
 }
 
 const variantStyles = {
@@ -17,7 +18,8 @@ const variantStyles = {
 const defaultStyles = " px-4 py-2 rounded-md flex items-center gap-2 hover:bg-blue-300 transition-colors duration-200 cursor-pointer text-white";
 
 export const Button = (props:buttonprops) => {
-    return <button onClick = {props.onClick} className = { variantStyles[props.variant] + " " + defaultStyles + " " + props.size}>
+    return <button onClick = {props.onClick} className = { variantStyles[props.variant] + " " + defaultStyles + " " + props.size + (props.loading ? " opacity-50 cursor-not-allowed " : "")} > 
+
     {props.starticon}
     {props.text}
     
