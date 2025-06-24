@@ -16,7 +16,8 @@ getusercontent.get("/getcontent", userMiddleware, async (req: Request, res: Resp
                 _id: item._id,
                 link: item.link,
                 type: item.type,
-                title: item.title
+                title: item.title,
+                description: item.description
             }))
         );
     } catch (error) {

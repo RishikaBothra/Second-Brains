@@ -9,13 +9,13 @@ addcontent.use(express.json());
 const contentSchema = z.object({
     link: z.string().url({ message: "Link must be a url" }),
     type: z.string().min(1, { message: "Type is required" }),
-    title: z.string().min(1, { message: "Title is required" })
+    title: z.string().min(1, { message: "Title is required" }),
+    description: z.string().optional(),
 });
 
-addcontent.post("/content", userMiddleware, async (req: Request, res: Response): Promise<void> => {
+addcontent.post("/addcontent", userMiddleware, async (req: Request, res: Response): Promise<void> => {
 
     const parsed = contentSchema.safeParse(req.body)
-
     if (!parsed.success) {
         res.status(400).send({
             message: "Invalid",
@@ -23,13 +23,14 @@ addcontent.post("/content", userMiddleware, async (req: Request, res: Response):
         });
         return;
     }
-    const { link, type, title } = parsed.data;
+    const { link, type, title, description } = parsed.data;
 
     try {
-        await addcontentmodel.create({
+        const response = await addcontentmodel.create({
             link,
             type,
             title,
+            description,
             userId: req.userId,
             tags: []
         });
