@@ -2,6 +2,7 @@ import { Brain } from "lucide-react";
 import { Twittericon } from "../icons/Twittericon";
 import { Youtubeicon } from "../icons/Youtubeicon";
 import { Slidebaritem } from "./slidebaritem";
+import { FileText, FileImage, FileType2 } from "lucide-react";
 
 export function Slidebar() {
     return <div className="h-screen bg-white border-r border-gray-300 w-72 fixed left-0 top-0 pt-4 pl-4">
@@ -11,10 +12,15 @@ export function Slidebar() {
             Brains
         </div>
         <div >
-            <Slidebaritem text="Twitter" icon={<Twittericon />} />
+            <Slidebaritem text="Twitter" icon={<Twittericon className="text-black" />} />
+        </div>
+        <div className="text-red-600">
+            <Slidebaritem text="YouTube" icon={<Youtubeicon className="text-red-600" />} />
         </div>
         <div>
-            <Slidebaritem text="YouTube" icon={<Youtubeicon />} />
+            <Slidebaritem text="Articles" icon={<FileText className="text-blue-500" />} />
+            <Slidebaritem text="PDFs" icon={<FileType2 className="text-red-500" />} />
+            <Slidebaritem text="Images" icon={<FileImage className="text-green-500" />} />
         </div>
     </div>
 }
