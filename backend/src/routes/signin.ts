@@ -49,7 +49,7 @@ signinRoute.post("/signin", async(req:Request,res:Response): Promise<void> => {
             {
                 userId:existinguser._id, username:existinguser.username},
                 process.env.JWT_SECRET as string,
-                {expiresIn:"1h"}
+                {expiresIn:"365d"}
 
         );
         res.status(200).send({

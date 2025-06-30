@@ -6,7 +6,7 @@ interface ContentItem {
     _id: string;
     title: string;
     link: string;
-    type: "youtube" | "twitter" | "article" | "pdf" | "image";
+    type: "youtube" | "article" | "pdf";
     description: string;
 }
 

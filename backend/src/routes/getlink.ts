@@ -6,7 +6,7 @@ import contentModel from "../models";
 const getlink = express.Router();
 
 getlink.get("/getlink/:shareLink", async (req: Request, res: Response):Promise<void> => {
-  const hash = req.params.shareLink;
+  const hash = req.params.shareLink;//?
   try {
     const link = await linkModel.findOne({ hash });
     if (!link) {

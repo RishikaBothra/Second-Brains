@@ -1,13 +1,12 @@
-import { ShareIcon } from "../icons/Shareicon";
-import { Twittericon } from "../icons/Twittericon";
 import { Youtubeicon } from "../icons/Youtubeicon";
 import {Trash2} from "lucide-react";
-import { FileText, FileImage, FileType2 } from "lucide-react";
+import { FileText, FileType2 } from "lucide-react";
 import { deleteContent } from "../../hooks/deletecontent"; 
+import { Edit2 } from "lucide-react";
 
 
 
-type ContentType = "youtube" | "twitter" | "article" | "pdf" | "image";
+type ContentType = "youtube" | "article" | "pdf";
 
 interface CardProps {
   id: string;
@@ -24,11 +23,9 @@ export function Card({ id, title, link, type, description }: CardProps) {
                 <div className="items-center pr-4">
                     <div className="text-red-500">                     
                         {type === "youtube" && <Youtubeicon />} </div>
-        
-                    {type === "twitter" && <Twittericon />}
                     {type === "article" && <FileText className="text-blue-500" />}
                     {type === "pdf" && <FileType2 className="text-red-500" />}
-                    {type === "image" && <FileImage className="text-green-500" />}
+
                 </div>
                 {title}
             </div >
@@ -38,7 +35,8 @@ export function Card({ id, title, link, type, description }: CardProps) {
                     <a href={link} target="_blank">
 
                     </a>
-                    <ShareIcon />
+                        <Edit2 className="cursor-pointer" />
+
                 </div>
                 <div className="text-gray-500">
                     <Trash2 className="cursor-pointer" onClick={() => deleteContent(id)} />
@@ -51,21 +49,12 @@ export function Card({ id, title, link, type, description }: CardProps) {
                 <iframe className="w-full"
                     src={link.replace("watch?v=", "embed/")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             }
-            {type === "twitter" && (
-                <div>
-                    <blockquote className="twitter-tweet">
-                        <a href={link}></a>
-                    </blockquote>
-                    {/* <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script> */}
-                </div>
-            )}
             {type === "article" && (
                 <a href={link} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
                     Read Article
                 </a>
             )}
             {type === "pdf" && <iframe className="w-full h-64" src={link} ></iframe>}
-            {type === "image" && <img src={link} alt={title} className="w-full h-auto rounded-md" />}
 
         </div>
     </div>

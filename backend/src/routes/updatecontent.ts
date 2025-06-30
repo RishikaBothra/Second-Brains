@@ -16,9 +16,8 @@ const updateContentSchema = z.object({
 updateContentRoute.put("/updatecontent", userMiddleware, async (req, res) => {
     const parsed = updateContentSchema.safeParse(req.body);
     if (!parsed.success) {
-        res.status(400).json({
+        res.status(400).send({
             message: "Invalid request body",
-            errors: parsed.error.errors
         });
         return;
     }
@@ -30,10 +29,10 @@ updateContentRoute.put("/updatecontent", userMiddleware, async (req, res) => {
             { new: true }
         );
         if (!updatedContent) {
-            res.status(404).json({ message: "Content not found or you are not authorized to update it" });
+            res.status(404).send({ message: "Content not found or you are not authorized to update it" });
             return;
         }
-        res.status(200).json({
+        res.status(200).send({
             message: "Content updated successfully",
             content: updatedContent
         });

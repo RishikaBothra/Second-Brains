@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { CreateContentModal } from "../CreateContentModal";
 import { PlusIcon } from "../icons/Plusicon";
-import { ShareIcon } from "../icons/Shareicon";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
 import { Slidebar } from "../ui/slidebar";
@@ -17,11 +16,6 @@ export function Dashboard() {
       <div className="p-4 ml-72 min-h-screen bg-gray-100 border-2 border-gray-100">
         <CreateContentModal open={modalOpen} onClose={() => setModalOpen(false)} />
         <div className="flex justify-end gap-4 mb-4">
-          <Button
-            variant="secondary"
-            text="Share Brain"
-            starticon={<ShareIcon />}
-          />
           <Button
             onClick={() => setModalOpen(true)}
             variant="primary"

@@ -6,10 +6,8 @@ import { BACKEND_URL } from '../config';
 
 const ContentType = {
     youtube: "youtube",
-    twitter: "twitter",
     article: "article",
     pdf: "pdf",
-    image: "image"
 } as const;
 
 type ContentType = typeof ContentType[keyof typeof ContentType];
@@ -98,13 +96,6 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
                     Youtube
                 </label>
                 <label className="flex items-center gap-1 cursor-pointer text-gray-600 hover:text-black transition-colors duration-200">
-                    <input
-                        type="radio"
-                        name="contentType"
-                        checked={contentType === ContentType.twitter}
-                        onChange={() => setContentType(ContentType.twitter)}
-                    />
-                    Twitter
                 </label>
                 <label className="flex items-center gap-1 cursor-pointer text-gray-600 hover:text-black transition-colors duration-200">
                     <input
@@ -115,7 +106,6 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
                     />
                     Article
                 </label>
-                <label className="flex items-center gap-1 cursor-pointer text-gray-600 hover:text-black transition-colors duration-200">
                     <input
                         type="radio"
                         name="contentType"
@@ -123,16 +113,6 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
                         onChange={() => setContentType(ContentType.pdf)}
                     />
                     PDF
-                </label>
-                <label className="flex items-center gap-1 cursor-pointer text-gray-600 hover:text-black transition-colors duration-200">
-                    <input
-                        type="radio"
-                        name="contentType"
-                        checked={contentType === ContentType.image}
-                        onChange={() => setContentType(ContentType.image)}
-                    />
-                    Image
-                </label>
             </div>
 
             <Button
